@@ -31,7 +31,7 @@ public static function createUser($user){
 
 public static function readUser($user){
     $query = self::$pdo->prepare(
-        "SELECT * FROM users WHERE email='$user->getEmail' AND password=$user->GetPassword()");
+        "SELECT * FROM users WHERE email='$user->getEmail()' AND password='$user->GetPassword()'");
 
     $query->execute();
 
