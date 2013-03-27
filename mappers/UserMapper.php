@@ -36,6 +36,7 @@ public static function createUser($user){
             password =:password"
         );
 
+
        $sql= $query->execute(array(
             ':email' =>$user->getEmail(),
             ':password' =>$user->getPassword()
