@@ -43,7 +43,6 @@ public static function createUser($user){
             ':email' =>$user->getEmail()
         ));
 
-
         $result = $query->fetch(PDO::FETCH_OBJ);
         $user->setFirstname($result->firstname);
         $user->setLastname($result->lastname);
