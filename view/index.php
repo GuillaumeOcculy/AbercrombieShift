@@ -11,7 +11,7 @@
 
 
 <h1>Register</h1>
-<form action="../controller/UsersController.php" method="post">
+<form action="../controller/user_create.php" method="post">
 
     <input type="text" name="firstname" placeholder="firstname">
     <input type="text" name="lastname" placeholder="lastname">
@@ -34,7 +34,7 @@
 
     <h1>Login</h1>
 
-<form action="../controller/UsersController.php" method="post">
+<form action="../controller/user_login.php" method="post">
 
     <input type="text" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">
