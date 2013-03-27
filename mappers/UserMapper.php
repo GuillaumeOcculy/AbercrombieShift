@@ -29,13 +29,23 @@ public static function createUser($user){
     ));
 }
 
-public static function readUser($user){
-    $query = self::$pdo->prepare(
-        "SELECT * FROM users WHERE email='$user->getEmail()' AND password='$user->GetPassword()'");
+    public static function readUser($user){
+        $query = self::$pdo->prepare(
+            "SELECT email FROM users WHERE
+            email = :email AND
+            password =:password"
+        );
 
-    $query->execute();
+       $sql= $query->execute(array(
+            ':email' =>$user->getEmail(),
+            ':password' =>$user->getPassword()
+        ));
 
-}
+        print("Retourne la ligne suivante en tant qu'objet anonyme ayant les noms de colonnes comme propriétés\n");
+
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+           return $result;
+    }
 
 
 
