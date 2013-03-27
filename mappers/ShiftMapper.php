@@ -32,12 +32,15 @@ class ShiftMapper extends DataMapper
 
     }
 
-    public static function readShift(){
+    public static function readShiftByJob($job){
         $query = self::$pdo->prepare(
-            "SELECT * FROM shifts"
+            "SELECT * FROM shifts WHERE
+            job =:job"
         );
 
-        $query->execute();
+        $query->execute(array(
+            'job' =>$job
+        ));
 
         $query->fetchAll(PDO::FETCH_OBJ);
         print_r($query);

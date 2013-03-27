@@ -14,6 +14,8 @@ echo $_SESSION['lastname'] .'<br>';
 echo $_SESSION['email'] .'<br>';
 echo $_SESSION['job'];
 
+ShiftMapper::readShiftByJob($_SESSION['job']);
+
 ?>
 
 <form action="../controller/shift_create.php" method="post">
@@ -24,10 +26,3 @@ echo $_SESSION['job'];
     <button type="submit">valid</button>
 
 </form>
-
-
-<?php
-
-ShiftMapper::readShift();
-
-?>
