@@ -16,6 +16,7 @@ session_start();
 if(isset($_POST['email']) && isset($_POST['password'])){
     $user = new User('', '', '', $_POST['email'], $_POST['password'], '');
     UserMapper::readUser($user);
+    $_SESSION['id'] = $user->getId();
     $_SESSION['firstname'] = $user->getFirstname();
     $_SESSION['lastname'] = $user->getLastname();
     $_SESSION['email'] = $user->getEmail();

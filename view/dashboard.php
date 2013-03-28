@@ -13,19 +13,32 @@ session_start();
 echo $_SESSION['firstname'] .'<br>';
 echo $_SESSION['lastname'] .'<br>';
 echo $_SESSION['email'] .'<br>';
-echo $_SESSION['job'];
+echo $_SESSION['job'] .'<br>';
 
 $shift = new Shift(null, null, null, null, null, $_SESSION['job']);
+try{
 
-$a = ShiftMapper::readShiftByJob($shift);
-echo $a->time;
-echo $a->date;
+    $b = ShiftMapper::readShiftByJob($shift);
+    foreach ($b as $a) {
+        $a->time =$a;
+        echo 'date : ' . $a->date . '<br>';
+        echo 'message : ' . $a->message . '<br>';
+        echo 'author : ' . $a->author . '<br>';
+        echo 'job : ' . $a->job . '<br>';
+    }
+
+
+}catch(Exception $e){
+    echo '';
+}
 ?>
+
+<a href="profil.php">profil</a>
 
 <form action="../controller/shift_create.php" method="post">
 
-    <input type="time" name="time" placeholder="time">
-    <input type="date" name="date" placeholder="date">
+    <input type="time" name="time"  value="10:00"  placeholder="time">
+    <input type="date" name="date" max="2013-12-31" min="2013-03-07" placeholder="date">
     <input type="text" name="message" placeholder="Tape your message">
     <button type="submit">valid</button>
 
