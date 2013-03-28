@@ -18,13 +18,10 @@ echo $_SESSION['job'] .'<br>';
 $shift = new Shift(null, null, null, null, null, $_SESSION['job']);
 try{
 
-    $b = ShiftMapper::readShiftByJob($shift);
-    foreach ($b as $a) {
-        $a->time =$a;
-        echo 'date : ' . $a->date . '<br>';
-        echo 'message : ' . $a->message . '<br>';
-        echo 'author : ' . $a->author . '<br>';
-        echo 'job : ' . $a->job . '<br>';
+    $result = ShiftMapper::readShiftByJob($shift);
+
+    foreach ($result as $shift) {//t'avais oublié le $ xd
+        echo $shift->time . '<br>';
     }
 
 
