@@ -7,6 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('../mappers/ShiftMapper.php');
+require_once('../model/Shift.php');
 session_start();
 
 echo $_SESSION['firstname'] .'<br>';
@@ -14,8 +15,10 @@ echo $_SESSION['lastname'] .'<br>';
 echo $_SESSION['email'] .'<br>';
 echo $_SESSION['job'];
 
-ShiftMapper::readShiftByJob($_SESSION['job']);
+$shift = new Shift(null, null, null, null, null, $_SESSION['job']);
 
+$a = ShiftMapper::readShiftByJob($shift);
+print_r($a) ;
 ?>
 
 <form action="../controller/shift_create.php" method="post">

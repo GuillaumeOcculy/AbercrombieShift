@@ -6,6 +6,8 @@
  * Time: 19:42
  * To change this template use File | Settings | File Templates.
  */
+
+require_once('../config/PDOManager.php');
 class DataMapper
 {
     protected static $pdo;
