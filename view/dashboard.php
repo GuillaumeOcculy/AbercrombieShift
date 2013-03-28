@@ -18,7 +18,8 @@ echo $_SESSION['job'];
 $shift = new Shift(null, null, null, null, null, $_SESSION['job']);
 
 $a = ShiftMapper::readShiftByJob($shift);
-print_r($a) ;
+echo $a->time;
+echo $a->date;
 ?>
 
 <form action="../controller/shift_create.php" method="post">

@@ -42,9 +42,11 @@ class ShiftMapper extends DataMapper
             'job' =>$shift->getJob()
         ));
 
-       $shift = $query->fetchAll(PDO::FETCH_OBJ);
+       while($shift = $query->fetch(PDO::FETCH_OBJ)){
+           return $shift ;
+       }
 
-      return $shift ;
+
 
     }
 
