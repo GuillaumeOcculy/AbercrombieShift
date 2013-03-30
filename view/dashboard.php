@@ -13,15 +13,42 @@ session_start();
 echo $_SESSION['firstname'] .'<br>';
 echo $_SESSION['lastname'] .'<br>';
 echo $_SESSION['email'] .'<br>';
-echo $_SESSION['job'] .'<br>';
+echo $_SESSION['job'] .'<br><br><br><br>';
 
 $shift = new Shift(null, null, null, null, null, $_SESSION['job']);
 try{
 
     $result = ShiftMapper::readShiftByJob($shift);
 
-    foreach ($result as $shift) {//t'avais oublié le $ xd
-        echo $shift->time . '<br>';
+    foreach ($result as $shift){
+   ?> <table>
+        <caption>Shift</caption>
+    <thead>
+
+    <tr>
+        <th>time</th>
+        <th>date</th>
+        <th>message</th>
+        <th>author</th>
+    </tr>
+
+    </thead>
+
+        <tbody>
+
+        <tr>
+            <td><?php echo $shift->time  ?></td>
+            <td><?php echo $shift->date  ?></td>
+            <td><?php echo $shift->message  ?></td>
+            <td><?php echo $shift->author  ?></td>
+            <td><a href="comment.php?id='<?php echo $shift->id ;?>">Reply</a></td>
+
+        </tr>
+        </tbody>
+
+   </table>
+
+    <?php
     }
 
 
