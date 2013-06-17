@@ -13,17 +13,30 @@ require_once('../model/User.php');
 require_once('../mappers/UserMapper.php');
 session_start();
 
-if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password']) && isset($_POST['confirmPassword']) && isset($_POST['job']) ){
-    if($_POST['password'] == $_POST['confirmPassword']){
-        $user = new User(null,$_POST["firstname"], $_POST["lastname"], $_POST['email'], $_POST['password'], $_POST['job']);
-        UserMapper::createUser($user);
-        $_SESSION['firstname'] = $user->getFirstname();
-        $_SESSION['lastname'] = $user->getLastname();
-        $_SESSION['email'] = $user->getEmail();
-        $_SESSION['job'] = $user->getJob();
+extract($_POST);
 
-        header('Location:../view/dashboard.php');
-    }else{
-        echo 'Password not match with Confirm Password';
+if (isset($_POST)){
+    if ( !empty($_POST)){
+        if($password == $confirm_password){
+
+
+            $user = new User(null, $first_name, $last_name, $email, $password, $job, null);
+
+            try{
+                UserMapper::createUser($user);
+                echo "good" ;
+
+            }catch (Exception $e){
+                echo "probleme";
+            }
+
+
+
+            // header('Location:../view/dashboard.php');
+        }else{
+            echo 'Password not match with Confirm Password';
+        }
     }
+
 }
+

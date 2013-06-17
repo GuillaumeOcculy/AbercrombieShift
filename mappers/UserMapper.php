@@ -46,16 +46,13 @@ public static function createUser($user){
 
 
         $result = $query->fetch(PDO::FETCH_OBJ);
-        $user->setId($result->id);
-        $user->setFirstName($result->first_name);
-        $user->setLastName($result->last_name);
-        $user->setEmail($result->email);
-        $user->setJob($result->job);
+
+        $user = new User($result->id, $result->first_name, $result->last_name, $result->email, null, $result->job, null);
 
         $_SESSION['user'] = $user;
         header('Location:../view/dashboard.php');
 
-        return $user;
+
     }
 
 
