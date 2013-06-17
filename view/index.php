@@ -13,11 +13,11 @@
 <h1>Register</h1>
 <form action="../controller/user_create.php" method="post">
 
-    <input type="text" name="firstname" placeholder="firstname">
-    <input type="text" name="lastname" placeholder="lastname">
+    <input type="text" name="first_name" placeholder="firstname">
+    <input type="text" name="last_name" placeholder="lastname">
     <input type="text" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">
-    <input type="password" name="confirmPassword" placeholder="confirmpassword">
+    <input type="password" name="confirm_password" placeholder="confirmpassword">
     <select name="job">
         <option value="cashier">Cashier</option>
         <option value="impact_1">Impact 1</option>

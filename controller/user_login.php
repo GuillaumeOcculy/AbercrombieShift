@@ -13,15 +13,18 @@ require_once('../model/User.php');
 require_once('../mappers/UserMapper.php');
 session_start();
 
-if(isset($_POST['email']) && isset($_POST['password'])){
-    $user = new User('', '', '', $_POST['email'], $_POST['password'], '');
-    UserMapper::readUser($user);
-    $_SESSION['id'] = $user->getId();
-    $_SESSION['firstname'] = $user->getFirstname();
-    $_SESSION['lastname'] = $user->getLastname();
-    $_SESSION['email'] = $user->getEmail();
-    $_SESSION['job'] = $user->getJob();
-    header('Location:../view/dashboard.php');
+extract($_POST);
+
+
+if(isset($email) && isset($password)){
+    $user = new User(null, null, null, $email, $password, null, null);
+    $result = UserMapper::readUser($user);
+//    $_SESSION['id'] = $result->getId();
+//    $_SESSION['first_name'] = $result->getFirstname();
+//    $_SESSION['last_name'] = $result->getLastname();
+//    $_SESSION['email'] = $result->getEmail();
+//    $_SESSION['job'] = $result->getJob();
+//    header('Location:../view/dashboard.php');
 }else{
     echo 'wrong login';
 }

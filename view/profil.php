@@ -12,8 +12,8 @@ require_once('../model/User.php');
 session_start();
 
 echo 'id : ' . $_SESSION['id'] . '<br>';
-echo 'firstname : ' . $_SESSION['firstname'] . '<br>';
-echo 'lastname : ' . $_SESSION['lastname'] . '<br>';
+echo 'first_name : ' . $_SESSION['first_name'] . '<br>';
+echo 'last_name : ' . $_SESSION['last_name'] . '<br>';
 echo 'email : ' . $_SESSION['email'] . '<br>';
 echo 'job : ' . $_SESSION['job'] . '<br>';
 

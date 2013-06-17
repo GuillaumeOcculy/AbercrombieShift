@@ -8,79 +8,132 @@
  */
 class User
 {
-private $id, $firstname, $lastname, $email, $password, $job;
+private $id, $first_name, $last_name, $email, $password, $job, $picture;
 
-    function __construct($id, $firstname, $lastname, $email, $password, $job){
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
+    function __construct($id, $first_name, $last_name, $email, $password, $job, $picture)
+    {
         $this->id = $id;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
         $this->email = $email;
         $this->password = $password;
         $this->job = $job;
+        $this->picture = $picture;
     }
 
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
-    }
-
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    public function setLastname($lastname)
-    {
-        $this->lastname = $lastname;
-    }
-
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
+    /**
+     * @param mixed $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
-    public function setJob($job)
+    /**
+     * @param mixed $first_name
+     */
+    public function setFirstName($first_name)
     {
-        $this->job = $job;
+        $this->first_name = $first_name;
     }
 
-    public function getJob()
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
     {
-        return $this->job;
+        return $this->first_name;
     }
 
+    /**
+     * @param mixed $last_name
+     */
+    public function setLastName($last_name)
+    {
+        $this->last_name = $last_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $password
+     */
     public function setPassword($password)
     {
         $this->password = $password;
     }
 
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
+    /**
+     * @param mixed $job
+     */
+    public function setJob($job)
+    {
+        $this->job = $job;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+
 
 
 }
-
-

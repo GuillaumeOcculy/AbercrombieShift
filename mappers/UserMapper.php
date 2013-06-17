@@ -7,25 +7,26 @@
  * To change this template use File | Settings | File Templates.
  */
 require_once('../mappers/DataMapper.php');
+session_start();
 class UserMapper extends DataMapper
 {
 
 public static function createUser($user){
     $query = self::$pdo->prepare(
         "INSERT INTO users SET
-        firstname = :firstname,
-        lastname = :lastname,
+        first_name = :first_name,
+        last_name = :last_name,
         email = :email,
         password = :password,
         job = :job"
     );
 
     $query->execute(array(
-        'firstname' => $user->getFirstname(),
-        'lastname' => $user->getLastname(),
-        'email' => $user->getEmail(),
-        'password' => $user->getPassword(),
-        'job' => $user->getJob()
+        ':first_name' => $user->getFirstName(),
+        ':last_name' => $user->getLastName(),
+        ':email' => $user->getEmail(),
+        ':password' => $user->getPassword(),
+        ':job' => $user->getJob()
     ));
 
     return $query;
@@ -43,12 +44,17 @@ public static function createUser($user){
             ':email' =>$user->getEmail()
         ));
 
+
         $result = $query->fetch(PDO::FETCH_OBJ);
         $user->setId($result->id);
-        $user->setFirstname($result->firstname);
-        $user->setLastname($result->lastname);
+        $user->setFirstName($result->first_name);
+        $user->setLastName($result->last_name);
         $user->setEmail($result->email);
         $user->setJob($result->job);
+
+        $_SESSION['user'] = $user;
+        header('Location:../view/dashboard.php');
+
         return $user;
     }
 

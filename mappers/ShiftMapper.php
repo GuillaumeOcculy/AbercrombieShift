@@ -48,4 +48,19 @@ class ShiftMapper extends DataMapper
 
        }
 
+    public static function readShiftByUser($shift){
+        $query = self::$pdo->prepare(
+            "SELECT * FROM shifts WHERE
+            email =:email"
+        );
+
+        $query->execute(array(
+            'email' =>$shift->getEmail()
+        ));
+
+        while($shiftByUser = $query->fetchAll(PDO::FETCH_OBJ)){
+            return $shiftByUser;
+        }
+    }
+
 }
