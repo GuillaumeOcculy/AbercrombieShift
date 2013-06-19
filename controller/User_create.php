@@ -11,32 +11,40 @@ require_once('../config/PDOManager.php');
 
 require_once('../model/User.php');
 require_once('../mappers/UserMapper.php');
-session_start();
+
+
+
 
 extract($_POST);
+if(empty($first_name)){
+    echo 'champs manquants';
+}
+else{
+    if (isset($_POST)){
+        if ( !empty($_POST)){
+            if($password == $confirm_password){
 
-if (isset($_POST)){
-    if ( !empty($_POST)){
-        if($password == $confirm_password){
+
+                $user = new User(null, $first_name, $last_name, $email, $password, $job, null);
+
+                try{
+                    UserMapper::createUser($user);
+                    echo "good" ;
+
+                }catch (Exception $e){
+                    echo "probleme";
+                }
 
 
-            $user = new User(null, $first_name, $last_name, $email, $password, $job, null);
 
-            try{
-                UserMapper::createUser($user);
-                echo "good" ;
-
-            }catch (Exception $e){
-                echo "probleme";
+                // header('Location:../view/dashboard.php');
+            }else{
+                echo 'Password not match with Confirm Password';
             }
-
-
-
-            // header('Location:../view/dashboard.php');
-        }else{
-            echo 'Password not match with Confirm Password';
         }
+
     }
+
 
 }
 

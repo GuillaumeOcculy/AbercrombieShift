@@ -46,11 +46,16 @@ public static function createUser($user){
 
 
         $result = $query->fetch(PDO::FETCH_OBJ);
+        if($result){
+            $user = new User($result->id, $result->first_name, $result->last_name, $result->email, null, $result->job, null);
 
-        $user = new User($result->id, $result->first_name, $result->last_name, $result->email, null, $result->job, null);
+            $_SESSION['user'] = $user;
+            header('Location:../view/dashboard.php');
+        }else{
+            echo "compte inexistant";
+        }
 
-        $_SESSION['user'] = $user;
-        header('Location:../view/dashboard.php');
+
 
 
     }

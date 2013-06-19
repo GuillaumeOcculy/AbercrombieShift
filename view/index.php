@@ -40,4 +40,6 @@
     <input type="password" name="password" placeholder="password">
     <button type="submit">valid</button>
 
+    <a href="connect_facebook.php">Se connecter avec facebook</a>
+
 </form>

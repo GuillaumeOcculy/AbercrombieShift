@@ -12,4 +12,10 @@ require_once('../mappers/UserMapper.php');
 require_once('../model/Shift.php');
 
 
-echo $_SESSION['user']->getFirstName();
+echo 'firtname : ' . $_SESSION['user']->getFirstName();
+echo '<br/>';
+echo 'lastname : ' . $_SESSION['user']->getLastName();
+echo '<br/>';
+echo 'email : ' . $_SESSION['user']->getEmail();
+echo '<br/>';
+echo 'job : ' . $_SESSION['user']->getJob();
